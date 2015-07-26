@@ -11,6 +11,7 @@
     <AssemblyName>InfyInsight.store</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -23,7 +24,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.Unity, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
@@ -56,7 +62,10 @@
       <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -64,18 +73,70 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBStore\DBStore.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBStore.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBStore\DBStore.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBStore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBStore\DBStore.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBStore.edmx</DependentUpon>
+    </Compile>
     <Compile Include="DBStore\DBStoreRepository.cs" />
+    <Compile Include="DBStore\Order.cs">
+      <DependentUpon>DBStore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBStore\Product.cs">
+      <DependentUpon>DBStore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBStore\Review.cs">
+      <DependentUpon>DBStore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBStore\User.cs">
+      <DependentUpon>DBStore.tt</DependentUpon>
+    </Compile>
     <Compile Include="IStoreRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="DBStore\DBStore.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DBStore.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="App.Config" />
+    <None Include="DBStore\DBStore.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBStore.edmx</DependentUpon>
+      <LastGenOutput>DBStore.Context.cs</LastGenOutput>
+    </None>
+    <None Include="DBStore\DBStore.edmx.diagram">
+      <DependentUpon>DBStore.edmx</DependentUpon>
+    </None>
+    <None Include="DBStore\DBStore.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBStore.edmx</DependentUpon>
+      <LastGenOutput>DBStore.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DBStore.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="DBStore\DBStore.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="DBStore\DBStore_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>DBStore.mdf</DependentUpon>
+    </Content>
+    <Content Include="DBStore_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>DBStore.mdf</DependentUpon>
     </Content>
@@ -102,6 +163,9 @@
       <Project>{de028abd-fbe3-46ab-b1b2-db443b9d5079}</Project>
       <Name>InfyInsight.models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
