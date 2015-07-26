@@ -10,7 +10,7 @@ namespace InfyInsight.business.contract
     public interface IProductsManager
     {
         IEnumerable<Product> SearchProducts(string wildCardString);
-        IEnumerable<Product> SearchProducts(string name);
+        Product SearchProducts(Guid id);
         
     }
 }
