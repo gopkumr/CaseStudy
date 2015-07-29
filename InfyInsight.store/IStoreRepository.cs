@@ -18,8 +18,8 @@ namespace InfyInsight.store
         User LoginUser(string userName, string password);
         User RegisterUser(User user);
 
-        Order AddProductToCart(Guid productId, int quantity);
-        Order RemoveProductToCart(Guid productId, int quantity);
+        Order AddProductToCart(Guid orderId, Guid productId, int quantity);
+        Order RemoveProductToCart(Guid orderId, Guid productId, int quantity);
         bool CheckoutCart(Guid orderId);
     }
 }
