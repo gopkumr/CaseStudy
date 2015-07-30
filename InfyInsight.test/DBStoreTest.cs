@@ -24,7 +24,7 @@ namespace InfyInsight.test
         {
             //Arrange
             _dbEntities.Stub(q => q.Products).Return(_dbProducts);
-            _dbEntities.Stub(q => q.SaveChanges).Return(1);
+            _dbEntities.Stub(q => q.SaveChanges()).Return(1);
             var dbStore = new DBStoreRepository(_dbEntities);
 
             //Act
