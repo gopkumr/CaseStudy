@@ -2,7 +2,7 @@
 <html class="no-js">
 <head>
     <meta charset="utf-8">
-    <title>Ani AngularJS Dashboard Theme</title>
+    <title>Infy InsightShop</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -10,8 +10,8 @@
     <!-- bower:css -->
     <!-- endbower -->
     <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <!-- build:css(.tmp) styles/main.css -->    
+    <link rel="stylesheet" href="~/app/styles/main.css">
     <!-- endbuild -->
 </head>
 <body ng-app="yapp">
@@ -40,17 +40,16 @@
     <!-- endbuild -->
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="../bower_components/angular/angular.js"></script>
-    <script src="../bower_components/angular-mocks/angular-mocks.js"></script>
-    <script src="../bower_components/angular-animate/angular-animate.js"></script>
-    <script src="../bower_components/ui-router/release/angular-ui-router.js"></script>
-    <script src="../bower_components/angular-animate/angular-animate.js"></script>
+    <script src="~/app/scripts/components/angular.min.js"></script>
+    <script src="~/app/scripts/components/angular-animate.min.js"></script>
+    <script src="~/app/scripts/components/angular-mocks.js"></script>
+    <script src="~/app/scripts/components/angular-ui-router.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    <script src="scripts/app.js"></script>
-    <script src="scripts/controllers/login.js"></script>
-    <script src="scripts/controllers/dashboard.js"></script>
+    <script src="~/app/scripts/app.js"></script>
+    <script src="~/app/scripts/controllers/dashboard.js"></script>
+    <script src="~/app/scripts/controllers/login.js"></script>
     <!-- endbuild -->
 </body>
 </html>

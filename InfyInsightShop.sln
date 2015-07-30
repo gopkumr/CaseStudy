@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfyInsight.web", "InfyInsight.web\InfyInsight.web.csproj", "{3D2BA80F-06AB-40B2-99E8-E57978D4BF13}"
 EndProject
@@ -16,6 +16,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfyInsight.business.contract", "InfyInsight.business.interface\InfyInsight.business.contract.csproj", "{0F5DAB43-7227-49A8-9103-84864B9A87DD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfyInsight.test", "InfyInsight.test\InfyInsight.test.csproj", "{D22DEFA2-A924-422E-A47E-FD2F5FED3BB5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7C27D1DC-514F-4781-99A2-F0437CD2ECAB}"
+	ProjectSection(SolutionItems) = preProject
+		WebEssentials-Settings.json = WebEssentials-Settings.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

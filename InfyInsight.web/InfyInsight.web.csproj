@@ -211,23 +211,29 @@
     <Content Include="app\404.html" />
     <Content Include="app\images\flat-avatar.png" />
     <Content Include="app\scripts\app.js" />
+    <Content Include="app\scripts\components\angular-animate.min.js" />
+    <Content Include="app\scripts\components\angular-mocks.js" />
+    <Content Include="app\scripts\components\angular-ui-router.min.js" />
+    <Content Include="app\scripts\components\angular.min.js" />
     <Content Include="app\scripts\controllers\dashboard.js" />
     <Content Include="app\scripts\controllers\login.js" />
     <Content Include="app\styles\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="app\styles\main.css">
+      <DependentUpon>main.less</DependentUpon>
+    </Content>
+    <Content Include="app\styles\main.min.css">
+      <DependentUpon>main.css</DependentUpon>
+    </Content>
     <Content Include="app\views\base.html" />
     <Content Include="app\views\dashboard.html" />
     <Content Include="app\views\dashboard\overview.html" />
     <Content Include="app\views\dashboard\reports.html" />
     <Content Include="app\views\login.html" />
     <Content Include="app\views\main-content.html" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="app\scripts\components\bootstrap.js" />
+    <Content Include="app\scripts\components\bootstrap.min.js" />
     <Content Include="app\styles\base.less" />
     <Content Include="app\styles\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="app\styles\fonts\glyphicons-halflings-regular.ttf" />
@@ -312,17 +318,17 @@
     <Content Include="app\styles\transitions\avatar.less" />
     <Content Include="app\styles\transitions\pages.less" />
     <Content Include="app\styles\widgets\input-underline.less" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <Content Include="Scripts\knockout-2.3.0.debug.js" />
-    <Content Include="Scripts\knockout-2.3.0.js" />
-    <Content Include="Scripts\knockout.validation.debug.js" />
-    <Content Include="Scripts\knockout.validation.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\respond.js" />
-    <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\_references.js" />
+    <None Include="app\scripts\components\jquery-1.10.2.intellisense.js" />
+    <Content Include="app\scripts\components\jquery-1.10.2.js" />
+    <Content Include="app\scripts\components\jquery-1.10.2.min.js" />
+    <Content Include="app\scripts\components\knockout-2.3.0.debug.js" />
+    <Content Include="app\scripts\components\knockout-2.3.0.js" />
+    <Content Include="app\scripts\components\knockout.validation.debug.js" />
+    <Content Include="app\scripts\components\knockout.validation.js" />
+    <Content Include="app\scripts\components\modernizr-2.6.2.js" />
+    <Content Include="app\scripts\components\respond.js" />
+    <Content Include="app\scripts\components\respond.min.js" />
+    <Content Include="app\scripts\components\_references.js" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -338,16 +344,16 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="app\scripts\components\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
+    <Content Include="app\styles\main.css.map">
+      <DependentUpon>main.css</DependentUpon>
+    </Content>
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <PropertyGroup>
