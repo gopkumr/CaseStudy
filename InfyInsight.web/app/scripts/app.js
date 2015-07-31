@@ -14,7 +14,7 @@ angular.module('yapp', ['ui.router','ngAnimate'])
       $urlRouterProvider.when('/home', '/dashboard/overview');
       $urlRouterProvider.when('/home/index', '/dashboard/overview');
       $urlRouterProvider.when('', '/dashboard/overview');
-    
+
       $stateProvider
           .state('base', {
               abstract: true,
@@ -37,6 +37,16 @@ angular.module('yapp', ['ui.router','ngAnimate'])
               url: '/overview',
               parent: 'dashboard',
               templateUrl: '/app/views/dashboard/overview.html'
+          })
+          .state('cart', {
+              url: '/cart',
+              parent: 'dashboard',
+              templateUrl: '/app/views/dashboard/cart.html'
+          })
+          .state('register', {
+              url: '/register',
+              parent: 'base',
+              templateUrl: '/app/views/register.html'
           })
           .state('storelocator', {
               url: '/storelocator',
