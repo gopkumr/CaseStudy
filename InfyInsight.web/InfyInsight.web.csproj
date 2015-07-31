@@ -227,7 +227,7 @@
     <Content Include="app\views\base.html" />
     <Content Include="app\views\dashboard.html" />
     <Content Include="app\views\dashboard\overview.html" />
-    <Content Include="app\views\dashboard\reports.html" />
+    <Content Include="app\views\dashboard\storelocator.html" />
     <Content Include="app\views\login.html" />
     <Content Include="app\views\main-content.html" />
     <Content Include="favicon.ico" />

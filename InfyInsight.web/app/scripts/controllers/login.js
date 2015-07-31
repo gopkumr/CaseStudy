@@ -10,11 +10,11 @@
 angular.module('yapp')
   .controller('LoginCtrl', function($scope, $location) {
 
-    $scope.submit = function() {
+      $scope.submit = function() {
 
-      $location.path('/dashboard');
+          $location.path('/dashboard/overview');
 
-      return false;
-    }
+          return false;
+      };
 
   });
