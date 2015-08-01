@@ -16,7 +16,7 @@ namespace InfyInsight.store
         IEnumerable<Product> SearchProduct(string WildCardString);
 
         User LoginUser(string userName, string password);
-        User RegisterUser(User user);
+        User RegisterUser(User user, string password);
 
         Order AddProductToCart(Guid orderId, Guid productId, int quantity);
         Order RemoveProductToCart(Guid orderId, Guid productId, int quantity);

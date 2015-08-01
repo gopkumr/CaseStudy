@@ -100,12 +100,50 @@ namespace InfyInsight.store.DBStore
 
         public models.User LoginUser(string userName, string password)
         {
-            throw new NotImplementedException();
+            var dbUsers = _dbContext.Users.Where(q => q.Password == password)
+                          .ToList();
+
+            if (dbUsers.Any())
+            {
+                foreach (var dbuser in dbUsers)
+                {
+                    var user = this.DeSerializeJson<models.User>(dbuser.User1);
+                    if (user.Email.ToLower() == userName.ToLower())
+                    {
+                        return user;
+                    }
+                }
+            }
+            return null;
         }
 
-        public models.User RegisterUser(models.User user)
+        public models.User RegisterUser(models.User user, string password)
         {
-            throw new NotImplementedException();
+
+            var dbUsers = _dbContext.Users.ToList();
+            if (dbUsers.Any())
+            {
+                foreach (var dbuser in dbUsers)
+                {
+                    var serializedUser = this.DeSerializeJson<models.User>(dbuser.User1);
+                    if (serializedUser.Email.ToLower() == user.Email.ToLower())
+                    {
+                        return null;
+                    }
+                }
+            }
+
+            var id = Guid.NewGuid();
+            var data = this.SerializeJson<models.User>(user);
+            _dbContext.Users.Add(new User
+            {
+                Id = id,
+                User1 = data,
+                Password = password
+            });
+
+            _dbContext.SaveChanges();
+            return user;
         }
 
         public models.Order AddProductToCart(Guid orderId, Guid productId, int quantity)
