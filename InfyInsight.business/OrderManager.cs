@@ -36,5 +36,10 @@ namespace InfyInsight.business
         {
             return _storeRepository.CreateCart();
         }
+
+        public models.Order GetCart(Guid orderId)
+        {
+            return _storeRepository.GetCart(orderId);
+        }
     }
 }

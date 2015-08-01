@@ -14,7 +14,8 @@ angular.module('yapp')
       $scope.viewModel = {
           searchResults: [],
           cartId: '',
-          itemsInCart:0
+          itemsInCart: 0,
+          cart:{}
       };
 
       this.initialize = function () {
@@ -55,6 +56,7 @@ angular.module('yapp')
           $http.patch(domainUrl + 'api/orders/' + $scope.viewModel.cartId + '?productId=' + productId + '&quantity=1').
               success(function (data) {
                   $scope.viewModel.itemsInCart = data.Items.length;
+                  $scope.viewModel.cart = data;
                   $scope.loading = false;
               }).
               error(function () {

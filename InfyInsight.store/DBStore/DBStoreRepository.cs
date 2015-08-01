@@ -235,6 +235,17 @@ namespace InfyInsight.store.DBStore
              return dbProductDb.ToList().Select(q => this.DeSerializeJson<models.Product>(q.Product1));
         }
 
+        public models.Order GetCart(Guid orderId)
+        {
+            var order = _dbContext.Orders.FirstOrDefault(q => q.Id == orderId);
+            if (order != null)
+            {
+                var orderModel = this.DeSerializeJson<models.Order>(order.Order1);
+                return orderModel;
+            }
+            return null;
+        }
+
         public bool CheckoutCart(Guid orderId)
         {
             throw new NotImplementedException();

@@ -1,6 +1,5 @@
 ﻿<div>
     <h2>Order</h2>
-    
     <div class="jumbotron">
         <div class="container">
             <div class="row">
@@ -16,6 +15,11 @@
                                     <td>Item</td>
                                     <td>Quantity</td>
                                     <td>Price</td>
+                                </tr>
+                                <tr data-ng-repeat="item in viewModel.cart.Items">
+                                    <td>{{::item.Key.ShortDescription}}</td>
+                                    <td>{{::item.Value}}</td>
+                                    <td>{{::item.Key.Price}}</td>
                                 </tr>
                                 <tr>
                                     <td></td>

@@ -13,5 +13,6 @@ namespace InfyInsight.business.contract
         Order RemoveProductToCart(Guid orderId, Guid productId, int quantity);
         bool CheckoutCart(Guid orderId);
         Guid CreateCart();
+        Order GetCart(Guid orderId);
     }
 }
