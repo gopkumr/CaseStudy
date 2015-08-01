@@ -4,19 +4,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using InfyInsight.business.contract;
+using InfyInsight.store;
 
 namespace InfyInsight.business
 {
     public class ProductManager : IProductManager
     {
+        private IStoreRepository _storeRepository;
+        public ProductManager(IStoreRepository storeRepository)
+        {
+            _storeRepository = storeRepository;
+        }
+
         public IEnumerable<InfyInsight.models.Product> SearchProducts(string wildCardString)
         {
-            throw new NotImplementedException();
+            return _storeRepository.SearchProduct(wildCardString);
         }
 
         public InfyInsight.models.Product SearchProducts(Guid id)
         {
-            throw new NotImplementedException();
+            return _storeRepository.GetProduct(id);
         }
     }
 }

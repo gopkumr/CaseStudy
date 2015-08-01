@@ -20,8 +20,14 @@ namespace InfyInsight.api.Controllers
         [Route("api/products/{searchstring}")]
         public IEnumerable<Product> GetProducts(string searchstring)
         {
-           var products=new List<Product>();
-            return products;
+            return _productManager.SearchProducts(searchstring);
+        }
+
+        [HttpGet]
+        [Route("api/products/{id:Guid}")]
+        public Product GetProducts(Guid id)
+        {
+            return _productManager.SearchProducts(id);
         }
     }
 }

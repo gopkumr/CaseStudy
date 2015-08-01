@@ -11,6 +11,7 @@ namespace InfyInsight.store.DBStore
     public class DBStoreRepository:IStoreRepository
     {
         private DBStoreEntities _dbContext;
+
         public DBStoreRepository()
         {
             _dbContext = new DBStoreEntities();
@@ -76,7 +77,9 @@ namespace InfyInsight.store.DBStore
 
         public IEnumerable<models.Product> SearchProduct(string WildCardString)
         {
-            var dbProductDb = _dbContext.Products.Where(q => this.DeSerializeJson<models.Product>(q.Product1).LongDescription.Contains(WildCardString) || this.DeSerializeJson<models.Product>(q.Product1).ShortDescription.Contains(WildCardString));
+            var dbProductDb = _dbContext.Products
+                        .ToList()
+                        .Where(q => this.DeSerializeJson<models.Product>(q.Product1).LongDescription.Contains(WildCardString) || this.DeSerializeJson<models.Product>(q.Product1).ShortDescription.Contains(WildCardString));
             if (dbProductDb.Any())
             {
                 return dbProductDb.Select(q => this.DeSerializeJson<models.Product>(q.Product1)).ToList();

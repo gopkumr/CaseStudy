@@ -63,6 +63,10 @@
       <Project>{de028abd-fbe3-46ab-b1b2-db443b9d5079}</Project>
       <Name>InfyInsight.models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\InfyInsight.store\InfyInsight.store.csproj">
+      <Project>{c03778e6-fe0a-46d8-89d7-689264a474e3}</Project>
+      <Name>InfyInsight.store</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
