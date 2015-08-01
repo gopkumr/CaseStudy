@@ -29,5 +29,12 @@ namespace InfyInsight.api.Controllers
         {
             return Ok(_productManager.SearchProducts(id));
         }
+
+        [HttpGet]
+        [Route("api/products/{number:int}")]
+        public IHttpActionResult GetProducts(int number)
+        {
+            return Ok(_productManager.GetProducts(number));
+        }
     }
 }

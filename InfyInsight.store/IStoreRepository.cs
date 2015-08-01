@@ -14,6 +14,7 @@ namespace InfyInsight.store
         Product GetProduct(Guid id);
         Product GetProduct(Product product);
         IEnumerable<Product> SearchProduct(string WildCardString);
+        IEnumerable<Product> GetProducts(int number);
 
         User LoginUser(string userName, string password);
         User RegisterUser(User user, string password);

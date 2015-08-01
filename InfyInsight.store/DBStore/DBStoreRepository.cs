@@ -41,11 +41,12 @@ namespace InfyInsight.store.DBStore
             var product = _dbContext.Products.FirstOrDefault(q => q.Id == productId);
             if (product != null)
             {
-                var productData=this.DeSerializeJson<models.Product>(product.Product1);
-                productData.Inventory += quantity;
+                var productData = this.DeSerializeJson<models.Product>(product.Product1);
+                productData.Inventory = quantity;
                 var data = this.SerializeJson<models.Product>(productData);
                 product.Product1 = data;
                 _dbContext.SaveChanges();
+                return productData;
             }
 
             throw new ObjectNotFoundException(string.Format("Product with id {0} not found", productId));
@@ -212,6 +213,16 @@ namespace InfyInsight.store.DBStore
             return null;
         }
 
+         public IEnumerable<models.Product> GetProducts(int number)
+        {
+            var dbProductDb = _dbContext.Products.Where(q => true);
+            if (number > 0)
+            {
+                dbProductDb = dbProductDb.Skip(0).Take(number);
+            }
+             return dbProductDb.ToList().Select(q => this.DeSerializeJson<models.Product>(q.Product1));
+        }
+
         public bool CheckoutCart(Guid orderId)
         {
             throw new NotImplementedException();
@@ -228,5 +239,8 @@ namespace InfyInsight.store.DBStore
             var deseralizedData = JsonConvert.DeserializeObject<T>(source);
             return deseralizedData;
         }
+
+
+       
     }
 }
