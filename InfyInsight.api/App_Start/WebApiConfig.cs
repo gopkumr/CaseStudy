@@ -20,6 +20,7 @@ namespace InfyInsight.api
             var container = new UnityContainer();
             //Dependencies
             container.RegisterType<IProductManager, ProductManager>();
+            container.RegisterType<IOrderManager, OrderManager>();
             container.RegisterType<IStoreRepository, DBStoreRepository>();
 
             config.DependencyResolver = new UnityResolver(container);

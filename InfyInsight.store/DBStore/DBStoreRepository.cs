@@ -147,6 +147,16 @@ namespace InfyInsight.store.DBStore
             return user;
         }
 
+        public Guid CreateCart()
+        {
+            var order = new Order();
+            order.Id = Guid.NewGuid();
+            order.Order1 = this.SerializeJson(new models.Order(){OrderId =order.Id, Items = new List<KeyValuePair<models.Product, int>>()});
+            _dbContext.Orders.Add(order);
+            _dbContext.SaveChanges();
+            return order.Id;
+        }
+
         public models.Order AddProductToCart(Guid orderId, Guid productId, int quantity)
         {
             var order = new Order();
@@ -162,8 +172,9 @@ namespace InfyInsight.store.DBStore
                 if (productExisting.Any())
                 {
                     var itemExisting = productExisting.First();
-                    orderModel.Items.Remove(itemExisting.Key);
-                    orderModel.Items.Add(itemExisting.Key, itemExisting.Value + quantity);
+                    orderModel.Items.Remove(itemExisting);
+                    orderModel.Items.Add(new KeyValuePair<models.Product, int>(itemExisting.Key,
+                        itemExisting.Value + quantity));
                 }
                 else
                 {
@@ -171,7 +182,7 @@ namespace InfyInsight.store.DBStore
                     if (newProduct != null)
                     {
                         var newProductModel = this.DeSerializeJson<models.Product>(newProduct.Product1);
-                        orderModel.Items.Add(newProductModel, quantity);
+                        orderModel.Items.Add(new KeyValuePair<models.Product, int>(newProductModel, quantity));
                     }
                 }
                 var orderData = this.SerializeJson(orderModel);
@@ -198,10 +209,11 @@ namespace InfyInsight.store.DBStore
                 if (productExisting.Any())
                 {
                     var itemExisting = productExisting.First();
-                    orderModel.Items.Remove(itemExisting.Key);
+                    orderModel.Items.Remove(itemExisting);
                     if (itemExisting.Value > quantity)
                     {
-                        orderModel.Items.Add(itemExisting.Key, itemExisting.Value - quantity);
+                        orderModel.Items.Add(new KeyValuePair<models.Product, int>(itemExisting.Key,
+                            itemExisting.Value - quantity));
                     }
                 }
 
@@ -218,7 +230,7 @@ namespace InfyInsight.store.DBStore
             var dbProductDb = _dbContext.Products.Where(q => true);
             if (number > 0)
             {
-                dbProductDb = dbProductDb.Skip(0).Take(number);
+                dbProductDb = dbProductDb.OrderBy(q=>q.Id).Skip(0).Take(number);
             }
              return dbProductDb.ToList().Select(q => this.DeSerializeJson<models.Product>(q.Product1));
         }

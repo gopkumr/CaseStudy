@@ -31,5 +31,10 @@ namespace InfyInsight.business
         {
             return _storeRepository.CheckoutCart(orderId);
         }
+
+        public Guid CreateCart()
+        {
+            return _storeRepository.CreateCart();
+        }
     }
 }

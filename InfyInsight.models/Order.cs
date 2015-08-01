@@ -10,7 +10,7 @@ namespace InfyInsight.models
     {
         public Guid OrderId { get; set; }
         public User User { get; set; }
-        public Dictionary<Product, int> Items { get; set; }
+        public List<KeyValuePair<Product, int>> Items { get; set; }
         public Address ShippingAddress { get; set; }
         public PricingInformation PriceInformation { get; set; }
     }

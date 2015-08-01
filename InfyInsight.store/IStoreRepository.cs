@@ -22,5 +22,6 @@ namespace InfyInsight.store
         Order AddProductToCart(Guid orderId, Guid productId, int quantity);
         Order RemoveProductToCart(Guid orderId, Guid productId, int quantity);
         bool CheckoutCart(Guid orderId);
+        Guid CreateCart();
     }
 }

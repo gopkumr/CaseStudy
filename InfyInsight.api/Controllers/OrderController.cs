@@ -39,5 +39,12 @@ namespace InfyInsight.api.Controllers
         {
             return _orderManager.CheckoutCart(orderId);
         }
+
+        [HttpGet]
+        [Route("api/orders")]
+        public Guid CreateCart()
+        {
+            return _orderManager.CreateCart();
+        }
     }
 }
