@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
+using System.Web.Http;
 using InfyInsight.business.contract;
 using InfyInsight.models;
 
 namespace InfyInsight.api.Controllers
 {
-    public class ProductsController : Controller
+    public class ProductsController : ApiController
     {
         private IProductManager _productManager;
         public ProductsController(IProductManager productManager)
@@ -17,7 +17,7 @@ namespace InfyInsight.api.Controllers
         }
 
         [HttpGet]
-        [Route("/products/{searchstring}")]
+        [Route("api/products/{searchstring}")]
         public IEnumerable<Product> GetProducts(string searchstring)
         {
            var products=new List<Product>();
