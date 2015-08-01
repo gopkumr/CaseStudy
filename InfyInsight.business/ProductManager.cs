@@ -30,5 +30,10 @@ namespace InfyInsight.business
         {
             return _storeRepository.AddProduct(product);
         }
+
+        public models.Product AddInventory(models.Product product)
+        {
+            return _storeRepository.AddInventory(product.ProductId, product.Inventory);
+        }
     }
 }

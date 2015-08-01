@@ -4,36 +4,40 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using InfyInsight.business.contract;
+using InfyInsight.models;
+
 
 namespace InfyInsight.api.Controllers
 {
     public class OrderController : ApiController
     {
-        // GET api/cart
-        public IEnumerable<string> Get()
+        private readonly IOrderManager _orderManager;
+
+        public OrderController(IOrderManager orderManager)
         {
-            return new string[] { "value1", "value2" };
+            _orderManager = orderManager;
         }
 
-        // GET api/cart/5
-        public string Get(int id)
+        [HttpPatch]
+        [Route("api/orders/{orderId:Guid}")]
+        public Order AddProductToCart(Guid orderId, Guid productId, int quantity)
         {
-            return "value";
+            return _orderManager.AddProductToCart(orderId, productId, quantity);
         }
 
-        // POST api/cart
-        public void Post([FromBody]string value)
+        [HttpDelete]
+        [Route("api/orders/{orderId:Guid}")]
+        public Order RemoveProductToCart(Guid orderId, Guid productId, int quantity)
         {
+            return _orderManager.RemoveProductToCart(orderId, productId, quantity);
         }
 
-        // PUT api/cart/5
-        public void Put(int id, [FromBody]string value)
+        [HttpPost]
+        [Route("api/orders/{orderId:Guid}")]
+        public bool CheckoutCart(Guid orderId)
         {
-        }
-
-        // DELETE api/cart/5
-        public void Delete(int id)
-        {
+            return _orderManager.CheckoutCart(orderId);
         }
     }
 }

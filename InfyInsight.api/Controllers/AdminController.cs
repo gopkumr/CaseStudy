@@ -17,18 +17,6 @@ namespace InfyInsight.api.Controllers
             _productManager = productManager;
         }
 
-        // GET api/values
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/values/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
         [HttpPost]
         [Route("api/products")]
         public Guid AddProduct([FromBody]Product value)
@@ -36,14 +24,11 @@ namespace InfyInsight.api.Controllers
             return _productManager.AddProduct(value);
         }
 
-        // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
+        [HttpPatch]
+        [Route("api/products")]
+        public Product AddProductInventory([FromBody]Product value)
         {
-        }
-
-        // DELETE api/values/5
-        public void Delete(int id)
-        {
+            return _productManager.AddInventory(value);
         }
     }
 }
