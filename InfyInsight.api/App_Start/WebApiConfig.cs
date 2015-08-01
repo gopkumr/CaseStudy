@@ -14,6 +14,7 @@ namespace InfyInsight.api
     {
         public static void Register(HttpConfiguration config)
         {
+            config.EnableCors();
             var container = new UnityContainer();
             //Dependencies
             container.RegisterType<IProductManager, ProductManager>();
