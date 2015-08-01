@@ -1,0 +1,29 @@
+<div>
+    <style>
+        #map-canvas {
+            width: 800px;
+            height: 500px;
+        }
+    </style>
+    <h2>Store Locator <small>locate our store nearby</small></h2>
+    <span class="glyphicon glyphicon-dashboard bg-fade"></span>
+    <div class="jumbotron">
+        <div class="container">
+            <div id="map-canvas"></div>
+        </div>
+    </div>
+    <script>
+        function initialize() {
+            var mapCanvas = document.getElementById('map-canvas');
+            var mapOptions = {
+                center: new google.maps.LatLng(44.5403, -78.5463),
+                zoom: 8,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(mapCanvas, mapOptions);
+        }
+
+        initialize();
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+</div>
