@@ -151,6 +151,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnityDepedencyResolver.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -195,7 +196,20 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\InfyInsight.business.interface\InfyInsight.business.contract.csproj">
+      <Project>{0f5dab43-7227-49a8-9103-84864b9a87dd}</Project>
+      <Name>InfyInsight.business.contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InfyInsight.business\InfyInsight.business.csproj">
+      <Project>{e8cb72b7-6824-4a2e-8b39-605650dc351b}</Project>
+      <Name>InfyInsight.business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InfyInsight.models\InfyInsight.models.csproj">
+      <Project>{de028abd-fbe3-46ab-b1b2-db443b9d5079}</Project>
+      <Name>InfyInsight.models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

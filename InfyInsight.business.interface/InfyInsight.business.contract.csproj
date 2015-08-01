@@ -50,7 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IOrderManager.cs" />
-    <Compile Include="IProductsManager.cs" />
+    <Compile Include="IProductManager.cs" />
     <Compile Include="ISecurityProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

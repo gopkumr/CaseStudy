@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using Microsoft.Practices.Unity;
 
 namespace InfyInsight.api
 {
@@ -9,6 +10,10 @@ namespace InfyInsight.api
     {
         public static void Register(HttpConfiguration config)
         {
+            var container = new UnityContainer();
+            //Dependencies
+            config.DependencyResolver = new UnityResolver(container);
+
             // Web API configuration and services
 
             // Web API routes

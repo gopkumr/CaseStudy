@@ -7,7 +7,7 @@ using InfyInsight.models;
 
 namespace InfyInsight.business.contract
 {
-    public interface IProductsManager
+    public interface IProductManager
     {
         IEnumerable<Product> SearchProducts(string wildCardString);
         Product SearchProducts(Guid id);

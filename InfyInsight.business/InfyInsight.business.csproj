@@ -59,6 +59,10 @@
       <Project>{0f5dab43-7227-49a8-9103-84864b9a87dd}</Project>
       <Name>InfyInsight.business.contract</Name>
     </ProjectReference>
+    <ProjectReference Include="..\InfyInsight.models\InfyInsight.models.csproj">
+      <Project>{de028abd-fbe3-46ab-b1b2-db443b9d5079}</Project>
+      <Name>InfyInsight.models</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
