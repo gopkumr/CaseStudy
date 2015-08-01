@@ -11,6 +11,7 @@ namespace InfyInsight.business.contract
     {
         IEnumerable<Product> SearchProducts(string wildCardString);
         Product SearchProducts(Guid id);
+        Guid AddProduct(Product product);
         
     }
 }

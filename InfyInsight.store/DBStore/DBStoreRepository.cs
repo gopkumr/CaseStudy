@@ -78,12 +78,23 @@ namespace InfyInsight.store.DBStore
         public IEnumerable<models.Product> SearchProduct(string WildCardString)
         {
             var dbProductDb = _dbContext.Products
-                        .ToList()
-                        .Where(q => this.DeSerializeJson<models.Product>(q.Product1).LongDescription.Contains(WildCardString) || this.DeSerializeJson<models.Product>(q.Product1).ShortDescription.Contains(WildCardString));
+                        .ToList();
+
             if (dbProductDb.Any())
             {
-                return dbProductDb.Select(q => this.DeSerializeJson<models.Product>(q.Product1)).ToList();
+                var products=new List<models.Product>();
+                foreach(var dbProduct in dbProductDb)
+                {
+                    var product=this.DeSerializeJson<models.Product>(dbProduct.Product1);
+                    if(product.LongDescription.ToLower().Contains(WildCardString.ToLower()) || product.ShortDescription.ToLower().Contains(WildCardString.ToLower()))
+                    {
+                        products.Add(product);
+                    }
+                }
+
+                return products;
             }
+
             return new List<models.Product>();
         }
 

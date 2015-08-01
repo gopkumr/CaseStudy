@@ -4,11 +4,19 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using InfyInsight.business.contract;
+using InfyInsight.models;
 
 namespace InfyInsight.api.Controllers
 {
     public class AdminController : ApiController
     {
+        private IProductManager _productManager;
+        public AdminController(IProductManager productManager)
+        {
+            _productManager = productManager;
+        }
+
         // GET api/values
         public IEnumerable<string> Get()
         {
@@ -21,9 +29,11 @@ namespace InfyInsight.api.Controllers
             return "value";
         }
 
-        // POST api/values
-        public void Post([FromBody]string value)
+        [HttpPost]
+        [Route("api/products")]
+        public Guid AddProduct([FromBody]Product value)
         {
+            return _productManager.AddProduct(value);
         }
 
         // PUT api/values/5
