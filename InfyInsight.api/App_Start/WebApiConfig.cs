@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using InfyInsight.business;
 using InfyInsight.business.contract;
 using InfyInsight.store;
@@ -14,7 +15,8 @@ namespace InfyInsight.api
     {
         public static void Register(HttpConfiguration config)
         {
-            config.EnableCors();
+            var cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors);
             var container = new UnityContainer();
             //Dependencies
             container.RegisterType<IProductManager, ProductManager>();

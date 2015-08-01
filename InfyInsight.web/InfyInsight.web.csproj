@@ -222,6 +222,7 @@
     <Content Include="app\scripts\components\angular-mocks.js" />
     <Content Include="app\scripts\components\angular-ui-router.min.js" />
     <Content Include="app\scripts\components\angular.min.js" />
+    <Content Include="app\scripts\controllers\addProductController.js" />
     <Content Include="app\scripts\controllers\dashboard.js" />
     <Content Include="app\scripts\controllers\login.js" />
     <Content Include="app\styles\fonts\glyphicons-halflings-regular.svg" />
@@ -231,6 +232,7 @@
     <Content Include="app\styles\main.min.css">
       <DependentUpon>main.css</DependentUpon>
     </Content>
+    <Content Include="app\views\admin\addproduct.html" />
     <Content Include="app\views\base.html" />
     <Content Include="app\views\dashboard.html" />
     <Content Include="app\views\dashboard\cart.html" />
