@@ -356,6 +356,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="app\scripts\components\jquery-1.10.2.min.map" />
+    <None Include="Properties\PublishProfiles\WebDeployment.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

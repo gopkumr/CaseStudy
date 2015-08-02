@@ -19,7 +19,7 @@
                                 <tr data-ng-repeat="item in viewModel.cart.Items">
                                     <td>{{::item.Key.ShortDescription}}</td>
                                     <td>{{::item.Value}}</td>
-                                    <td>{{::item.Key.Price}}</td>
+                                    <td>{{::(item.Key.Price*item.Value)}}</td>
                                 </tr>
                                 <tr>
                                     <td></td>
