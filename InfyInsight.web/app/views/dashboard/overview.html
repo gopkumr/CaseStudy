@@ -8,6 +8,10 @@
     <form class="form-inline">
         <input type="text" class="form-control" placeholder="Search products" data-ng-model="viewModel.searchText" /><button id="search" class="btn btn-default" data-ng-click="SearchItem()">Search</button>
     </form>
+    <br/>
+    <div class="progress progress-striped active" data-ng-if="viewModel.loading">
+        <div class="progress-bar" style="width: 100%;"></div>
+    </div>
 
     <div class="jumbotron">
         <div class="container">

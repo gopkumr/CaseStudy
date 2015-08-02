@@ -3,6 +3,11 @@
     <div class="row">
         <div class="col-md-4 col-lg-7 col-md-offset-4 col-lg-offset-3">
             <h2>Manage Product</h2>
+            
+            <br />
+            <div class="progress progress-striped active" data-ng-if="viewModel.loading">
+                <div class="progress-bar" style="width: 100%;"></div>
+            </div>
 
             <div class="jumbotron">
                 <div class="container">

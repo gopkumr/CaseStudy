@@ -12,7 +12,8 @@
                 inventory: ''
             },
             itemSelected: false,
-            selectedItemName:'Select existing item'
+            selectedItemName: 'Select existing item',
+            loading:false
         };
 
         $scope.save = function() {
@@ -24,8 +25,12 @@
                 },
                 data: $scope.viewModel.productDetails
             };
-
-            $http(req).success(function() { alert('success'); }).error(function(data) {
+            $scope.viewModel.loading = true;
+            $http(req).success(function() {
+                $scope.viewModel.loading = false;
+                alert('success');
+            }).error(function (data) {
+                $scope.viewModel.loading = false;
                 alert(data);
             });
         };
@@ -39,8 +44,12 @@
                 },
                 data: $scope.viewModel.productDetails
             };
-
-            $http(req).success(function () { alert('success'); }).error(function (data) {
+            $scope.viewModel.loading = true;
+            $http(req).success(function() {
+                $scope.viewModel.loading = false;
+                alert('success');
+            }).error(function (data) {
+                $scope.viewModel.loading = false;
                 alert(data);
             });
         };
@@ -55,15 +64,16 @@
             $scope.viewModel.selectedItemName = product.ShortDescription;
         };
 
-        this.initialize = function() {
+        this.initialize = function () {
+            $scope.viewModel.loading = true;
             $http.get(domainUrl + 'api/products/0').
              success(function (data) {
                  $scope.viewModel.products = data;
-                 $scope.loading = false;
+                 $scope.viewModel.loading = false;
              }).
              error(function () {
                  alert('Error occured');
-                 $scope.loading = false;
+                 $scope.viewModel.loading = false;
              });
         };
 
