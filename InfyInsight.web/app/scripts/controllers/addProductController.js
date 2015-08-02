@@ -1,4 +1,4 @@
-﻿angular.module('yapp')
+﻿angular.module('infyapp')
     .controller('AddProductController', function ($scope, $state, $http) {
         var domainUrl = 'http://localhost:21506/';
         $scope.$state = $state;
@@ -28,10 +28,10 @@
             $scope.viewModel.loading = true;
             $http(req).success(function() {
                 $scope.viewModel.loading = false;
-                alert('success');
+                $scope.showSuccess('Product added successfully');
             }).error(function (data) {
                 $scope.viewModel.loading = false;
-                alert(data);
+                $scope.showSuccess('Error in adding the product');
             });
         };
         
@@ -47,10 +47,10 @@
             $scope.viewModel.loading = true;
             $http(req).success(function() {
                 $scope.viewModel.loading = false;
-                alert('success');
+                $scope.showSuccess('Product updated successfully');
             }).error(function (data) {
                 $scope.viewModel.loading = false;
-                alert(data);
+                $scope.showSuccess('Error in updating the product');
             });
         };
 
@@ -65,6 +65,8 @@
         };
 
         this.initialize = function () {
+            $scope.viewModel.isSuccess = false;
+            $scope.viewModel.isError = false;
             $scope.viewModel.loading = true;
             $http.get(domainUrl + 'api/products/0').
              success(function (data) {
@@ -72,10 +74,25 @@
                  $scope.viewModel.loading = false;
              }).
              error(function () {
-                 alert('Error occured');
+                 $scope.showError('Error loading products.')
                  $scope.viewModel.loading = false;
              });
         };
 
         this.initialize();
+
+        $scope.showSuccess = function (message) {
+            $scope.viewModel.isSuccess = true;
+            $scope.viewModel.isError = false;
+            $scope.viewModel.successMessage = message;
+            $scope.viewModel.errorMessage = '';
+
+        };
+
+        $scope.showError = function (message) {
+            $scope.viewModel.isSuccess = false;
+            $scope.viewModel.isError = true;
+            $scope.viewModel.successMessage = '';
+            $scope.viewModel.errorMessage = message;
+        };
     });

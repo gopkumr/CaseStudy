@@ -10,14 +10,17 @@
             </div>
 
             <div class="jumbotron">
+                <div class="alert alert-success alert-dismissible" role="alert" data-ng-if="viewModel.isSuccess">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    {{viewModel.successMessage}}
+                </div>
+                <div class="alert alert-danger alert-dismissible" role="alert" data-ng-if="viewModel.isError">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    {{viewModel.errorMessage}}
+                </div>
                 <div class="container">
                     <div class="row">
-                        <div class="alert alert-success">
-                           Test
-                        </div>
-
                         <div class="col-xs-6 col-md-12">
-
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">Please enter product details</h3>

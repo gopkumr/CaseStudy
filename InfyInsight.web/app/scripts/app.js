@@ -1,14 +1,5 @@
 'use strict';
-
-/**
- * @ngdoc overview
- * @name yapp
- * @description
- * # yapp
- *
- * Main module of the application.
- */
-angular.module('yapp', ['ui.router', 'ngAnimate'])
+angular.module('infyapp', ['ui.router', 'ngAnimate'])
     .config(function($stateProvider, $urlRouterProvider) {
 
         $urlRouterProvider.when('/home', '/dashboard/overview');

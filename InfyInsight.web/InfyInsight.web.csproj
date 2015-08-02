@@ -240,7 +240,6 @@
     <Content Include="app\views\register.html" />
     <Content Include="app\views\dashboard\storelocator.html" />
     <Content Include="app\views\login.html" />
-    <Content Include="app\views\main-content.html" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="app\scripts\components\bootstrap.js" />

@@ -1,4 +1,4 @@
-angular.module('yapp')
+angular.module('infyapp')
   .controller('DashboardCtrl', function($scope, $state, $http) {
       var domainUrl = 'http://localhost:21506/';
       $scope.$state = $state;
@@ -95,7 +95,7 @@ angular.module('yapp')
           $scope.viewModel.loading = true;
           $http.post(domainUrl + 'api/orders/' + $scope.viewModel.cartId).
               success(function () {
-                  $scope.showSuccess('<strong>Congratulations!<strong> You have successfully purchased the item.');
+                  $scope.showSuccess('Congratulations! You have successfully purchased the item.');
                   $scope.viewModel.cart = {};
                   $scope.viewModel.itemsInCart = 0;
                   $scope.viewModel.loading = false;
