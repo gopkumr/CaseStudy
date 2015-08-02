@@ -15,7 +15,8 @@ angular.module('yapp')
           searchResults: [],
           cartId: '',
           itemsInCart: 0,
-          cart:{}
+          cart: {},
+          selectedItem: {}
       };
 
       this.initialize = function () {

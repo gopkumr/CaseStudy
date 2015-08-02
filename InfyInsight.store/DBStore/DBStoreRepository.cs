@@ -4,6 +4,7 @@ using System.Data.Entity.Core;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InfyInsight.models;
 using Newtonsoft.Json;
 
 namespace InfyInsight.store.DBStore
@@ -185,6 +186,17 @@ namespace InfyInsight.store.DBStore
                         orderModel.Items.Add(new KeyValuePair<models.Product, int>(newProductModel, quantity));
                     }
                 }
+
+                var totalPrice = 0.0m;
+                orderModel.Items.ForEach(q =>
+                {
+                    totalPrice += q.Key.Price*q.Value;
+                });
+                orderModel.PriceInformation = new PricingInformation()
+                {
+                    Total = totalPrice
+                };
+
                 var orderData = this.SerializeJson(orderModel);
                 order.Order1 = orderData;
                 if (order.Id == Guid.Empty)
@@ -248,7 +260,18 @@ namespace InfyInsight.store.DBStore
 
         public bool CheckoutCart(Guid orderId)
         {
-            throw new NotImplementedException();
+            var order = _dbContext.Orders.FirstOrDefault(q => q.Id == orderId);
+            if (order != null)
+            {
+                var orderModel = this.DeSerializeJson<models.Order>(order.Order1);
+                orderModel.Items.ForEach(q =>
+                {
+                    var product = GetProduct(q.Key.ProductId);
+                    AddInventory(product.ProductId, product.Inventory - q.Value);
+                });
+                return true;
+            }
+            return false;
         }
 
         private string SerializeJson<T>(T source)

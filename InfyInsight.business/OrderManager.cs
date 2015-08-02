@@ -19,6 +19,11 @@ namespace InfyInsight.business
 
         public models.Order AddProductToCart(Guid orderId, Guid productId, int quantity)
         {
+            var product = _storeRepository.GetProduct(productId);
+            if (product.Inventory < quantity)
+            {
+                throw new Exception("No sufficient quantity available to purchase");
+            }
             return _storeRepository.AddProductToCart(orderId, productId, quantity);
         }
 
