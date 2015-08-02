@@ -86,7 +86,10 @@
             $scope.viewModel.isError = false;
             $scope.viewModel.successMessage = message;
             $scope.viewModel.errorMessage = '';
-
+            window.setTimeout(function () {
+                $scope.viewModel.isSuccess = false;
+                $scope.viewModel.isError = false;
+            }, 1500);
         };
 
         $scope.showError = function (message) {
@@ -94,5 +97,9 @@
             $scope.viewModel.isError = true;
             $scope.viewModel.successMessage = '';
             $scope.viewModel.errorMessage = message;
+            window.setTimeout(function () {
+                $scope.viewModel.isSuccess = false;
+                $scope.viewModel.isError = false;
+            }, 2000);
         };
     });
