@@ -66,7 +66,7 @@ angular.module('infyapp')
               }).
               error(function (data) {
                   $scope.viewModel.loading = false;
-                  $scope.showError(data.ExceptionMessage);
+                  $scope.showError('Item could not be added to cart, item may be out of stock.');
               });
       };
       
