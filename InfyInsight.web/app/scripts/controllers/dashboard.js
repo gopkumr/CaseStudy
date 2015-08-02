@@ -16,14 +16,19 @@ angular.module('yapp')
           cartId: '',
           itemsInCart: 0,
           cart: {},
-          selectedItem: {}
+          selectedItem: {},
+          searchText:''
       };
 
       this.initialize = function () {
-          this.getProducts();
+          $scope.getProducts();
+
+          angular.element('#productDetailsModal').on('shown.bs.modal', function () {
+              
+          });
       };
 
-      this.getProducts = function () {
+      $scope.getProducts = function () {
           $scope.loading = true;
           $http.get(domainUrl + 'api/products/10').
               success(function(data) {
@@ -66,5 +71,38 @@ angular.module('yapp')
               });
       };
       
+      $scope.SelectItem = function (product) {
+          $scope.viewModel.selectedItem = product;
+      };
+      
+      $scope.SearchItem = function () {
+          if ($scope.viewModel.searchText == '') {
+              this.getProducts();
+          } else {
+              $http.get(domainUrl + 'api/products/' + $scope.viewModel.searchText).
+              success(function (data) {
+                  $scope.viewModel.searchResults = data;
+                  $scope.loading = false;
+              }).
+              error(function () {
+                  alert('Error occured');
+                  $scope.loading = false;
+              });
+          }
+      };
+
+      $scope.CheckOut = function () {
+          $http.post(domainUrl + 'api/orders/' + $scope.viewModel.cartId).
+              success(function () {
+                  alert('success');
+              }).
+              error(function () {
+                  alert('Error occured');
+                  $scope.loading = false;
+              });
+      };
+      
+      
+
       this.initialize();
   });

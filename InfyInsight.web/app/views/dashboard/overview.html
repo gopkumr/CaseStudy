@@ -6,21 +6,21 @@
 
     <h2>Search</h2>
     <form class="form-inline">
-        <input type="text" class="form-control" placeholder="Search products" /><button id="search" class="btn btn-default">Search</button>
+        <input type="text" class="form-control" placeholder="Search products" data-ng-model="viewModel.searchText" /><button id="search" class="btn btn-default" data-ng-click="SearchItem()">Search</button>
     </form>
 
     <div class="jumbotron">
-        <div class="container" >
+        <div class="container">
             <div class="row">
                 <div class="col-xs-6 col-md-3" data-ng-repeat="product in viewModel.searchResults">
                     <div class="thumbnail">
-                        <a data-toggle="modal" class="img-rounded" data-target="#productDetailsModal">
+                        <a data-toggle="modal" class="img-rounded" data-ng-click="SelectItem(product)" data-target="#productDetailsModal">
                             <img src="/app/images/book.jpg" alt="book text" />
                         </a>
                         <div class="caption">
                             <h3>{{::product.ShortDescription}}</h3>
                             <p>{{::product.LongDescription}}</p>
-                            <p><a href="#" class="btn btn-primary" role="button" data-ng-click="AddItemToCart(product.ProductId)">Add To Cart</a> <a href="#" class="btn btn-default" role="button" data-toggle="modal" data-target="#previewModal">Preview</a></p>
+                            <p><a href="#" class="btn btn-primary" role="button" data-ng-click="AddItemToCart(product.ProductId)">Add To Cart</a> <a href="#" class="btn btn-default" role="button" data-toggle="modal" data-ng-click="SelectItem(product)" data-target="#previewModal">Preview</a></p>
                         </div>
                     </div>
                 </div>
@@ -35,10 +35,23 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Product Name</h4>
+                    <h4 class="modal-title">{{viewModel.selectedItem.ShortDescription}}</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Some text in the modal.</p>
+                    <table class="table">
+                        <tr>
+                            <td>Description</td>
+                            <td>{{viewModel.selectedItem.LongDescription}}</td>
+                        </tr>
+                        <tr>
+                            <td>Quantity</td>
+                            <td>{{viewModel.selectedItem.Inventory}}</td>
+                        </tr>
+                        <tr>
+                            <td>Price</td>
+                            <td>{{viewModel.selectedItem.Price}}</td>
+                        </tr>
+                    </table>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -47,7 +60,7 @@
 
         </div>
     </div>
-    
+
     <div id="previewModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -55,10 +68,10 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Previwe Product Name</h4>
+                    <h4 class="modal-title">Preview {{viewModel.selectedItem.ShortDescription}}</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Some text in the modal.</p>
+                    <p>Preview PDF will be displayed here.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
